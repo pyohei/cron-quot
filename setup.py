@@ -22,7 +22,7 @@ setup(name='cronquot',
       # packages=find_packages,
       entry_points={
           'console_scripts': [
-              'cronschedule = prodictor.parser:main'],
+              'cronquot = cronquot.cronquot:main'],
           },
       install_requires=['crontab']
       )
