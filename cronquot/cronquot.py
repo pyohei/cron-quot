@@ -3,6 +3,7 @@ from crontab import CronTab
 from datetime import timedelta
 import os
 import re
+import sys
 import warnings
 
 
@@ -88,28 +89,44 @@ def export(targets):
                         s[0])
                 f.write(result)
 
+def execute_from_console():
+    return parse_command()
+
+def parse_command():
+    import argparse
+    from datetime import datetime
+    p = argparse.ArgumentParser(description="Download sites.")
+    p.add_argument('-s', '--start', type=str,
+                   default=datetime.now().strftime('%Y%m%d000000'),
+                   help='Cron start datetime.(YYYYmmddHHMMSS)',
+                   dest='start_datetime' )
+    p.add_argument('-e', '--end', type=str,
+                   help='Cron end datetime.(YYYYmmddHHMMSS)',
+                   default=datetime.now().strftime('%Y%m%d235959'),
+                   dest='end_datetime')
+    p.add_argument('-d', '--directory', type=str,
+                   help='Directory name excluding cron files.',
+                   default='crontab',
+                   dest='directory')
+    args = p.parse_args()
+    start = datetime.strptime(args.start_datetime, '%Y%m%d%H%M%S')
+    end = datetime.strptime(args.end_datetime, '%Y%m%d%H%M%S')
+    directory = args.directory
+    if not has_directory(directory):
+        sys.exit(1)
+    
+    t = main(directory, start, end)
+    export(t)
+
+def has_directory(directory):
+    if os.path.isdir(directory):
+        return True
+    print("""
+You must make `crontab` directory to load crontab files.
+If you don't want this name, you can chose your prefere name with argument of
+`-d`. Please see help command.\n""")
+    return False
+
+
 if __name__ == '__main__':
-    def _main():
-        import argparse
-        from datetime import datetime
-        p = argparse.ArgumentParser(description="Download sites.")
-        p.add_argument('-s', '--start', type=str,
-                       default=datetime.now().strftime('%Y%m%d000000'),
-                       help='Cron start datetime.(YYYYmmddHHMMSS)',
-                       dest='start_datetime' )
-        p.add_argument('-e', '--end', type=str,
-                       help='Cron end datetime.(YYYYmmddHHMMSS)',
-                       default=datetime.now().strftime('%Y%m%d235959'),
-                       dest='end_datetime')
-        p.add_argument('-d', '--directory', type=str,
-                       help='Directory name excluding cron files.',
-                       default='crontab',
-                       dest='directory')
-        args = p.parse_args()
-        start = datetime.strptime(args.start_datetime, '%Y%m%d%H%M%S')
-        end = datetime.strptime(args.end_datetime, '%Y%m%d%H%M%S')
-        directory = args.directory
-        
-        t = main(directory, start, end)
-        export(t)
-    _main()
+    parse_command()

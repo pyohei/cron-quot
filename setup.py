@@ -22,7 +22,7 @@ setup(name='cronquot',
       # packages=find_packages,
       entry_points={
           'console_scripts': [
-              'cronquot = cronquot.cronquot:main'],
+              'cronquot = cronquot.cronquot:execute_from_console'],
           },
       install_requires=['crontab']
       )
