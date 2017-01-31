@@ -1,6 +1,7 @@
 """Create cron schedule from exported data from `crontab -l` ."""
 from crontab import CronTab
 from datetime import timedelta
+from datetime import datetime
 import os
 import re
 import sys
@@ -25,20 +26,18 @@ def export(targets):
     header = 'date, hour, miniute, second, scrip, server\n'
     with open('result.csv', 'w') as f:
         f.write(header)
-        for t, scripts in sorted(targets.items()):
-            for s in scripts:
-                result = '{0},{1},{2}\n'.format(
-                        t.strftime('%Y-%m-%d,%H,%M,%S'),
-                        s[1],
-                        s[0])
-                f.write(result)
+        for t, s in targets:
+            result = '{0},{1},{2}\n'.format(
+                    t.strftime('%Y-%m-%d,%H,%M,%S'),
+                    s[1],
+                    s[0])
+            f.write(result)
 
 def execute_from_console():
     return parse_command()
 
 def parse_command():
     import argparse
-    from datetime import datetime
     p = argparse.ArgumentParser(description="Download sites.")
     p.add_argument('-s', '--start', type=str,
                    default=datetime.now().strftime('%Y%m%d000000'),
@@ -53,16 +52,13 @@ def parse_command():
                    default='crontab',
                    dest='directory')
     args = p.parse_args()
-    start = datetime.strptime(args.start_datetime, '%Y%m%d%H%M%S')
-    end = datetime.strptime(args.end_datetime, '%Y%m%d%H%M%S')
+    start = args.start_datetime
+    end = args.end_datetime
     directory = args.directory
     if not has_directory(directory):
         sys.exit(1)
     
-    c = Cron(directory, start, end)
-    for cc in c:
-        print cc
-    # export(t.crons)
+    export(Cron(start, end, directory))
 
 def has_directory(directory):
     if os.path.isdir(directory):
@@ -76,8 +72,10 @@ If you don't want this name, you can chose your prefere name with argument of
 
 class Cron(object):
 
-    def __init__(self, directory, start, end):
-        self.crons = self.__quote(directory, start, end)
+    def __init__(self, start, end, directory='crontab'):
+        start_dt = datetime.strptime(start, '%Y%m%d%H%M%S')
+        end_dt = datetime.strptime(end, '%Y%m%d%H%M%S')
+        self.crons = self.__quote(directory, start_dt, end_dt)
 
     @stop_future_warning
     def __quote(self, directory, start, end):
@@ -110,8 +108,9 @@ class Cron(object):
         return targets
     
     def __iter__(self):
-        for t, s in sorted(self.crons.items()):
-            yield (t, s)
+        for t, scripts in sorted(self.crons.items()):
+            for s in scripts:
+                yield (t, s)
 
     def create_file_object_by_server(self, directory):
         """Read cronfile and create file object."""
