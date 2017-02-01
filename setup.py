@@ -1,11 +1,11 @@
-from setuptools import setup#, find_packages
+from setuptools import setup
 
 long_desc = ''
 with open('README.md') as f:
     logn_desc = f.read()
 
 setup(name='cronquot',
-      version='0.0.1',
+      version='0.0.2',
       description='Cron scheduler.',
       long_description=long_desc,
       classifiers=[
@@ -16,10 +16,10 @@ setup(name='cronquot',
           ],
       keywords='cron crontab schedule',
       author='Shohei Mukai',
-      author_email='xxxx@mail.mail',
+      author_email='mukaishohei76@gmail.com',
       url='https://github.com/pyohei/cronquot',
       license='MIT',
-      # packages=find_packages,
+      packages=['cronquot'],
       entry_points={
           'console_scripts': [
               'cronquot = cronquot.cronquot:execute_from_console'],
