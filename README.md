@@ -1,6 +1,6 @@
 # cronquot
 
-[![PyPI](https://img.shields.io/pypi/v/nine.svg)](https://github.com/pyohei/cronquot)
+[![PyPI version](https://badge.fury.io/py/cronquot.svg)](https://badge.fury.io/py/cronquot)
 
 cronquot is a command/library for quoting cron execution.    
 You can create a list of cron scheduler with this tool.
