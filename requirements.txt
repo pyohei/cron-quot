@@ -1,0 +1,3 @@
+cronquot==0.0.4
+crontab==0.21.3
+wsgiref==0.1.2
