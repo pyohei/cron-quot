@@ -24,5 +24,6 @@ setup(name='cronquot',
           'console_scripts': [
               'cronquot = cronquot.cronquot:execute_from_console'],
           },
-      install_requires=['crontab']
+      install_requires=['crontab'],
+      test_suite='test' 
       )
