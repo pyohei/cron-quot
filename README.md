@@ -12,7 +12,28 @@ Only you should do is preparing your cron data.
 
 ## Usage
 
-making...
+### CUI
+
+From command, you can use only one command.
+
+```
+cronquote
+```
+
+After this, result file will export as 'result.csv'.
+
+### Python source code
+
+```py
+
+
+```
+
+## INstallation
+
+```
+$ pip install cronquot
+```
 
 
 ## Licence
