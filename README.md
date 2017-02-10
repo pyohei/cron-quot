@@ -37,12 +37,16 @@ After this, result file will export as 'result.csv'.
 
 ### Python source code
 
-```py
+```python
+from cronquot.cronquot import Cron
 
-
+c = Cron(start='20170101000000',
+         end='20170101101000')
+for cc in c:
+      print(cc)
 ```
 
-## INstallation
+## Installation
 
 ```
 $ pip install cronquot
