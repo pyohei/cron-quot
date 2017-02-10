@@ -12,6 +12,19 @@ Only you should do is preparing your cron data.
 
 ## Usage
 
+### Preparation
+
+To run _cronquot_, you have to make directory and put cron files exported from `crontab -l`.  
+File names should server names like below.
+
+```
+$ tree
+crontab/
+├── server1
+├── server2
+└── web1
+```
+
 ### CUI
 
 From command, you can use only one command.
