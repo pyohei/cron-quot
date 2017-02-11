@@ -30,7 +30,8 @@ crontab/
 From command, you can use only one command.
 
 ```
-cronquote
+# You can set start time and end time.
+$ cronquot -s 20170201010000 -e 20170201020000
 ```
 
 After this, result file will export as 'result.csv'.
