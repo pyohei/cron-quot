@@ -1,11 +1,14 @@
 import unittest
+import os
 from cronquot.cronquot import has_directory
 
 
 class CronquotTest(unittest.TestCase):
 
     def test_has_directory(self):
-        self.assertTrue(has_directory('/tmp'))
+        sample_dir = os.path.join(
+                os.path.dirname(__file__), 'crontab')
+        self.assertTrue(has_directory(sample_dir))
 
 if __name__ == '__main__':
     unittest.test()
