@@ -36,7 +36,7 @@ $ cronquot -s 20170201010000 -e 20170201020000
 
 After this, result file will export as 'result.csv'.
 
-### Python source code
+### Python sample source code
 
 ```python
 from cronquot.cronquot import Cron

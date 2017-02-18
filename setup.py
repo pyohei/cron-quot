@@ -1,11 +1,16 @@
+import codecs
 from setuptools import setup
+import pypandoc
 
 long_desc = ''
-with open('README.md') as f:
-    logn_desc = f.read()
+with codecs.open('README.md', 'r', 'utf-8') as f:
+    logn_desc_md = f.read()
+    with codecs.open('README.rst', 'w', 'utf-8') as rf:
+        long_desc = pypandoc.convert('README.md', 'rst')
+        rf.write(long_desc)
 
 setup(name='cronquot',
-      version='0.0.4',
+      version='0.0.7',
       description='Cron scheduler.',
       long_description=long_desc,
       classifiers=[
