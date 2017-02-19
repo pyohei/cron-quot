@@ -1,13 +1,25 @@
 import codecs
 from setuptools import setup
-import pypandoc
+try:
+    import pypandoc
+    is_travis = False
+except ImportError as e:
+    import os
+    if not 'TRAVIS' in os.environ:
+        raise ImportError(e)
+    else:
+        is_travis = True
 
-long_desc = ''
-with codecs.open('README.md', 'r', 'utf-8') as f:
-    logn_desc_md = f.read()
+
+def _create_log_desc(travis):
+    if is_travis:
+        return ''
+    _long_desc = ''
     with codecs.open('README.rst', 'w', 'utf-8') as rf:
-        long_desc = pypandoc.convert('README.md', 'rst')
-        rf.write(long_desc)
+        _long_desc = pypandoc.convert('README.md', 'rst')
+        rf.write(_long_desc)
+    return _long_desc
+long_desc = _create_log_desc(is_travis)
 
 setup(name='cronquot',
       version='0.0.7',
