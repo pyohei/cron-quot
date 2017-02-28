@@ -19,7 +19,7 @@ def _create_log_desc():
 long_desc = _create_log_desc()
 
 setup(name='cronquot',
-      version='0.0.7',
+      version='0.0.8',
       description='Cron scheduler.',
       long_description=long_desc,
       classifiers=[
