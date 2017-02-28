@@ -4,7 +4,7 @@ from setuptools import setup
 import pypandoc
 
 
-def _create_log_desc():
+def _create_long_desc():
     """Create long description and README formatted with rst."""
     _long_desc = ''
     with codecs.open('README.rst', 'w', 'utf-8') as rf:
@@ -18,7 +18,7 @@ def _create_log_desc():
                 return ''
         rf.write(_long_desc)
     return _long_desc
-long_desc = _create_log_desc()
+long_desc = _create_long_desc()
 
 # Setup
 setup(name='cronquot',
