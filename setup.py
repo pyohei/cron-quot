@@ -1,9 +1,11 @@
+"""Set up script"""
 import codecs
 from setuptools import setup
 import pypandoc
 
 
 def _create_log_desc():
+    """Create long description and README formatted with rst."""
     _long_desc = ''
     with codecs.open('README.rst', 'w', 'utf-8') as rf:
         try:
@@ -18,6 +20,7 @@ def _create_log_desc():
     return _long_desc
 long_desc = _create_log_desc()
 
+# Setup
 setup(name='cronquot',
       version='0.0.8',
       description='Cron scheduler.',
