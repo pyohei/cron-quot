@@ -1,0 +1,3 @@
+MAILTO=carrot@carrot.org
+
+30  10  1   1   0   /home/carrot/logrotate.sh --from 2017/02/20
