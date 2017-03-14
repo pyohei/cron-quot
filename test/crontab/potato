@@ -1,5 +1,4 @@
 MAILTO=potato@potato.org
 
-0   0-1 *   12  *   /bin/potato.sh -l
-10-15/2 */5 *   *   0,5 /home/potato/deploy.sh --repository potato
-
+0	0-1	*	12	*	/bin/potato.sh -l
+10-15/2	*/5	*	*	0,5	/home/potato/deploy.sh --repository potato
