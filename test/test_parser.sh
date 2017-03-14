@@ -3,7 +3,7 @@
 # Black Box test for cron parser.
 rm result.csv
 
-python ../cronquot/cronquot.py --start 20170114235959 --end 20170115060000
+python ../cronquot/cronquot.py -s 20161230200000 -e 20170104101111 -d crontab
 
 RESULT=`diff result.csv test/test_result.csv`
 
