@@ -6,7 +6,8 @@ install:
   - pip install coveralls
 script: 
   - python setup.py test
-  - cd test; sh test_parser.sh; cd ../
+    #- cd test; sh test_parser.sh; cd ../; if [ $* -eq 1 ]; then exit 1;
+  - sh test_parser.sh
   - coverage run setup.py test
 after_success:
   - coveralls

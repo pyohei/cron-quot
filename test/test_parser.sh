@@ -22,9 +22,10 @@ RESULT_CMD="diff -c result.csv test/test_result.csv"
 RESULT_COUNT=`$RESULT_CMD | wc -c | tr -d " "`
 if [ $RESULT_COUNT -eq 10 ]; then
     echo "Success!"
+    exit 0
 else
     echo "Failure! Your diff is below."
     echo "---------------------------------->"
     eval $RESULT_CMD
-    exit 1
+    return 1
 fi
