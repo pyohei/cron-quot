@@ -7,7 +7,7 @@ install:
 script: 
   - python setup.py test
     #- cd test; sh test_parser.sh; cd ../; if [ $* -eq 1 ]; then exit 1;
-  - sh test_parser.sh
+  - cd test; sh test_parser.sh; cd ../
   - coverage run setup.py test
 after_success:
   - coveralls
