@@ -20,7 +20,7 @@ python ../cronquot/cronquot.py -s 20161230200000 -e 20170104010000 -d crontab
 # Compare result is correct or not
 RESULT_CMD="diff -c result.csv test/test_result.csv"
 RESULT_COUNT=`$RESULT_CMD | wc -c | tr -d " "`
-if [ $RESULT_COUNT -eq 0 ]; then
+if [ $RESULT_COUNT -eq 10 ]; then
     echo "Success!"
 else
     echo "Failure! Your diff is below."
