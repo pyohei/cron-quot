@@ -7,16 +7,23 @@ if [ ! -e $DIFF_FILE ]; then
     exit 1
 fi
 
-# Black Box test for cron parser.
-rm result.csv
+# Delete previous result file.
+RESULT_FILE="result.csv"
+if [ -e $RESULT_FILE ]; then
+    rm result.csv
+    echo "Delte old result file"
+fi
 
+# Execute test
 python ../cronquot/cronquot.py -s 20161230200000 -e 20170104010000 -d crontab
 
-RESULT=`diff result.csv test/test_result.csv`
-
-if [ -z $RESULT ]; then
+# Compare result is correct or not
+RESULT_CMD="diff -c result.csv test/test_result.csv"
+RESULT_COUNT=`$RESULT_CMD | wc -c | tr -d " "`
+if [ $RESULT_COUNT -eq 0 ]; then
     echo "Success!"
 else
     echo "Failure! Your diff is below."
-    echo ${RESULT}
+    echo "---------------------------------->"
+    eval $RESULT_CMD
 fi
