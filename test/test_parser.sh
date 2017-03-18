@@ -27,5 +27,5 @@ else
     echo "Failure! Your diff is below."
     echo "---------------------------------->"
     eval $RESULT_CMD
-    return 1
+    exit 1
 fi
