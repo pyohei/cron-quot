@@ -88,5 +88,5 @@ ENV/
 # Rope project settings
 .ropeproject
 .DS_Store
-cronquot/result.csv
+result.csv
 cronquot/crontab/*
