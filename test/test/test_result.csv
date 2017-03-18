@@ -41,4 +41,4 @@ date, hour, miniute, second, scrip, server
 2017-01-03,10,00,00,/usr/local/bin/potato.sh,tomato
 2017-01-03,10,30,00,/usr/local/bin/potato.sh,tomato
 2017-01-03,20,00,00,/usr/local/bin/potato.sh,tomato
-2017-01-03,20,30,00,/usr/local/bin/potato.sh,tomato
+2017-01-03,20,30,00,/usr/local/bin/potato.sh,tomato2
