@@ -41,6 +41,8 @@ After this, result file will export as 'result.csv'.
 Python sample source code
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+*You can use this with only python2.7*
+
 .. code:: python
 
     from cronquot.cronquot import Cron
