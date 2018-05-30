@@ -1,4 +1,5 @@
 """Create cron schedule from exported data from `crontab -l` ."""
+
 from crontab import CronTab
 from datetime import timedelta
 from datetime import datetime
@@ -86,6 +87,7 @@ class Cron(object):
                 if not self.is_cron_script(li):
                     continue
 
+                # TODO: cope with space or tab 
                 nz_crnon = self.normalize_cron_script(li)
                 cron_time = nz_crnon[0]
                 cron_script = nz_crnon[1]
