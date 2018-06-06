@@ -87,7 +87,6 @@ class Cron(object):
                 if not self.is_cron_script(li):
                     continue
 
-                # TODO: cope with space or tab 
                 nz_crnon = self.normalize_cron_script(li)
                 cron_time = nz_crnon[0]
                 cron_script = nz_crnon[1]
@@ -132,9 +131,8 @@ class Cron(object):
         return True
 
     def normalize_cron_script(self, cron_script):
-        result = re.sub(r'  +', '\t', cron_script)
-        result_list = result.split('\t')
-        return (' '.join(result_list[0:5]), result_list[-1])
+        results = re.split("[ \t]+", cron_script)
+        return (' '.join(results[0:5]), results[-1])
 
 
 if __name__ == '__main__':
