@@ -1,6 +1,6 @@
 """Set up script"""
-import codecs
 from setuptools import setup
+import os
 
 
 def _create_long_desc():
