@@ -1,4 +1,4 @@
-"""Create cron schedule from exported data from `crontab -l` ."""
+"""Create cron schedule from exported data with `crontab -l` ."""
 
 from crontab import CronTab
 from datetime import timedelta
@@ -24,7 +24,7 @@ def stop_future_warning(func):
     return wrapper
 
 def export(targets):
-    header = 'date, hour, miniute, second, scrip, server\n'
+    header = 'date,hour,miniute,second,scrip,server\n'
     with open('result.csv', 'w') as f:
         f.write(header)
         for t, s in targets:
