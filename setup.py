@@ -17,7 +17,7 @@ long_desc = _create_long_desc()
 
 # Setup
 setup(name='cronquot',
-      version='0.1.3',
+      version='0.1.4',
       description='Cron scheduler.',
       long_description=long_desc,
       long_description_content_type='text/markdown',

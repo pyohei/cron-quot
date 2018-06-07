@@ -31,7 +31,7 @@ From command, you can use only one command.
 
 ```
 # You can set start time and end time.
-$ cronquot -s 20170201010000 -e 20170201020000
+$ cronquot -s 20170201010000 -e 20170201020000 -d crontab
 ```
 
 After this, result file will export as 'result.csv'.
