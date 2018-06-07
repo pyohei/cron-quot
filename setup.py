@@ -17,7 +17,7 @@ long_desc = _create_long_desc()
 
 # Setup
 setup(name='cronquot',
-      version='0.1.1',
+      version='0.1.2',
       description='Cron scheduler.',
       long_description=long_desc,
       classifiers=[
